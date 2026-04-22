@@ -76,9 +76,11 @@ Getting started is as simple as opening a file:
 
 ### 🗺️ Map Routing View
 *(Interactive dark-themed map with route visualization)*
+<img src="https://raw.githubusercontent.com/sai-vineeth-kankanala/Optimizing-EV-Charging-Station-Usage-Using-Graph-Theory/main/map_routing.png" alt="Map Routing View" width="800">
 
 ### 🌐 Graph Topology View
 *(Abstract network of EV charging stations and their interconnections)*
+<img src="https://raw.githubusercontent.com/sai-vineeth-kankanala/Optimizing-EV-Charging-Station-Usage-Using-Graph-Theory/main/graph_topology.png" alt="Graph Topology View" width="800">
 
 </div>
 
