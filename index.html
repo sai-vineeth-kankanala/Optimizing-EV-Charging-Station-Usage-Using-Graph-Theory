@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVRoute Optimizer - New York Edition</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- UI Overlay Panel -->
+    <div class="sidebar">
+        <div class="header">
+            <h1>⚡ EVRoute Optimizer</h1>
+            <p>Graph Theory Routing across New York</p>
+        </div>
+
+        <div class="control-group">
+            <label>Current Location (Your GPS)</label>
+            <div class="location-inputs">
+                <input type="text" id="userLat" value="40.6930459" readonly>
+                <input type="text" id="userLon" value="-74.00016529999999" readonly>
+            </div>
+            <button id="btnSetLocation" class="btn btn-secondary">Center on Marker</button>
+        </div>
+
+        <div class="control-group">
+            <label>Vehicle Range (<span id="rangeVal">500</span> km)</label>
+            <input type="range" id="rangeInput" min="50" max="1000" value="500">
+        </div>
+
+        <div class="control-group">
+            <label>Algorithm</label>
+            <div class="radio-group">
+                <div class="radio">
+                    <input type="radio" id="algoDijkstra" name="algorithm" value="dijkstra" checked>
+                    <label for="algoDijkstra">Dijkstra</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" id="algoAstar" name="algorithm" value="astar">
+                    <label for="algoAstar">A* Search</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>Simulate Live Network</label>
+            <button id="btnRandomize" class="btn btn-secondary">Randomize Congestion</button>
+        </div>
+
+        <div class="control-group">
+            <label>Abstract View</label>
+            <button id="btnToggleGraph" class="btn btn-secondary">View Graph Topology</button>
+        </div>
+
+        <button id="btnFindRoute" class="btn btn-primary">Find Optimal Route</button>
+
+        <!-- Results Panel -->
+        <div class="results" id="resultsPanel">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 5px;">
+                <h3 style="margin:0;">Route Details</h3>
+                <button id="btnOpenMaps" class="btn btn-secondary" style="padding: 6px 10px; display: none; font-size: 0.75rem; width:auto; color: #60a5fa; border: 1px solid rgba(96, 165, 250, 0.4);"><span style="margin-right:4px;">🗺️</span> Open in Maps</button>
+            </div>
+            <div id="routeStats" class="stats-placeholder">No route calculated yet.</div>
+            <div id="routeList" class="route-list"></div>
+        </div>
+    </div>
+
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Topology Container (Hidden by default) -->
+    <div id="topology-container" class="topology-container" style="display:none;"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <!-- Vis Network JS -->
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="index.js"></script>
+</body>
+</html>
